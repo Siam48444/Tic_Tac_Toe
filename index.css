@@ -1,0 +1,320 @@
+@font-face {
+    font-family: Regular;
+    src: url(Fonts/Inter_28pt-Regular.ttf);
+}
+@font-face {
+    font-family: Medium;
+    src: url(Fonts/Inter_28pt-Medium.ttf);
+}
+@font-face {
+    font-family: Bold;
+    src: url(Fonts/Inter_28pt-Bold.ttf);
+}
+@font-face {
+    font-family: Extrabold;
+    src: url(Fonts/Inter_28pt-ExtraBold.ttf);
+}
+
+:root {
+    --color_bg: #eeeeee;
+    --color_main: #3a3a3a;
+    --color_sub: #dddddd;
+
+    --cell_width: clamp(3em, 15vmin, 18em);
+    --cell_border: solid 0.05em var(--color_main);
+
+    --mark_size: calc(var(--cell_width) * 0.9);
+    --mark_thickness: 1em;
+
+    --button_border: solid 0.01em var(--color_main);
+    --button_border_radius: clamp(0.5em, 0.8vmin, 0.8em);
+    --button_padding: clamp(0.5em, 1vmin, 1.3em) clamp(1em, 2vmin, 2.6em);
+    --button_font_size: clamp(0.9em, 1.5vmin, 1em);
+    --button_box_shadow: 0 0.2em var(--color_main);
+
+    --winning_message_heading_size: calc(var(--cell_width) * 0.5);
+
+    --transition_duration_fast: 300ms;
+    --transition_duration_medium: calc(var(--transition_duration_fast) + 200ms);
+}
+
+
+/* Themes */
+.dollar {
+    --color_bg: #e4e4d4;
+    --color_main: #415041;
+    --color_sub: #cbd0bf;
+}
+.moonlight {
+    --color_bg: #191f28;
+    --color_main: #c69f68;
+    --color_sub: #141a22;
+}
+
+
+*,
+*::after,
+*::before {
+    user-select: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    background-color: var(--color_bg);
+}
+
+main {
+    width: min(100%, 2000px);
+    margin: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1em, 4vmin, 3em);
+    background-color: var(--color_bg);
+}
+
+.board {
+    position: relative;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--cell_width);
+    aspect-ratio: 1;
+    background-color: var(--color_bg);
+    border: var(--cell_border);
+    position: relative;
+    cursor: pointer;
+}
+
+
+/* Remove unnecessary borders */
+.cell:is(:nth-child(1), :nth-child(2), :nth-child(3)) { border-top: none; }
+.cell:is(:nth-child(1), :nth-child(4), :nth-child(7)) { border-left: none; }
+.cell:is(:nth-child(7), :nth-child(8), :nth-child(9)) { border-bottom: none; }
+.cell:is(:nth-child(3), :nth-child(6), :nth-child(9)) { border-right: none; }
+
+
+/* X and O marks */
+.cell > :is(.cross_svg, .circle_svg) {
+    position: absolute;
+    fill: none;
+    stroke: var(--color_main);
+    stroke-width: var(--mark_thickness);
+    width: var(--mark_size);
+    aspect-ratio: 1;
+    pointer-events: none;
+
+    transition:
+        stroke var(--transition_duration_fast), 
+        stroke-dashoffset var(--transition_duration_fast);
+}
+
+
+/* X marks */
+.cell > .cross_svg { stroke-dasharray: 111; stroke-dashoffset: 111; }
+.cell.cross > .cross_svg { stroke-dashoffset: 0; }
+
+
+/* O marks */
+.cell > .circle_svg { stroke-dasharray: 222; stroke-dashoffset: 222; }
+.cell.circle > .circle_svg { stroke-dashoffset: 0; }
+
+
+.cell.cross > .circle_svg { display: none; } /* Remove the circle in the cross cell */
+.cell.circle > .cross_svg { display: none; } /* Remove the cross in the circle cell */
+
+
+/* Disable the cursor */
+.cell:is(.cross, .circle) { cursor: not-allowed; }
+
+
+/* Winning state */
+.cell.won_cell { 
+    background-color: var(--color_main); 
+
+    transition: background-color var(--transition_duration_medium);
+}
+
+.cell.won_cell > :is(.circle_svg, .cross_svg) { 
+    stroke: var(--color_bg);
+}
+
+
+/* Winning message */
+.winning_message {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2vmin;
+    position: absolute;
+    inset: 0;
+    background-color: var(--color_bg);
+
+    opacity: 0;
+    transform: translateX(-3%);
+}
+
+.winning_message:is(.show_draw, .cross, .circle) {
+    opacity: 1;
+    transform: translateX(0);
+
+    transition-property: opacity, transform;
+    transition-duration: var(--transition_duration_fast);
+    transition-delay: var(--transition_duration_medium);
+}
+
+.winning_mark_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1vmin;
+}
+
+.winning_mark_container > :is(.circle_svg, .cross_svg) {
+    fill: none;
+    stroke: var(--color_main);
+    stroke-width: var(--mark_thickness);
+    width: var(--mark_size);
+    aspect-ratio: 1;
+    pointer-events: none;
+
+    transition:
+        stroke var(--transition_duration_fast),
+        stroke-dashoffset var(--transition_duration_fast);
+}
+
+
+/* Display the correct mark for the winner */
+.winning_message.cross > .winning_mark_container > .circle_svg { display: none; }
+.winning_message.circle > .winning_mark_container > .cross_svg { display: none; }
+
+.winning_message > h1 {
+    font-family: Extrabold;
+    font-size: var(--winning_message_heading_size);
+    color: var(--color_main);
+    line-height: 1;
+}
+
+.winning_message > p {
+    font-family: Medium;
+    font-size: calc(var(--winning_message_heading_size) * 0.25);
+    color: var(--color_main);
+}
+
+
+/* Restart button */
+.restart_button {
+    padding: var(--button_padding);
+    background-color: var(--color_sub);
+    outline: none;
+    border: var(--button_border);
+    border-radius: var(--button_border_radius);
+    font-family: Medium;
+    font-size: var(--button_font_size);
+    color: var(--color_main);
+    cursor: pointer;
+    width: calc(var(--cell_width) * 3);
+
+    transition: box-shadow var(--transition_duration_fast);
+}
+
+
+/* Player details on the top of the board */
+.top_details {
+    width: calc(var(--cell_width) * 3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: cneter;
+    gap: 1.5vmin;
+    position: relative;
+}
+
+.scoreboard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1.5vmin;
+}
+
+.score_button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    gap: 0.5em;
+    padding: var(--button_padding);
+    background-color: var(--color_sub);
+    outline: none;
+    border: var(--button_border);
+    border-radius: var(--button_border_radius);
+    cursor: pointer;
+
+    transition: box-shadow var(--transition_duration_fast);
+}
+
+.score_button.active_turn {
+    box-shadow: var(--button_box_shadow);
+}
+
+.score_button > svg {
+    fill: none;
+    stroke: var(--color_main);
+    stroke-width: calc(var(--mark_thickness) * 1.5);
+    width: calc(var(--button_font_size) * 1.2);
+    aspect-ratio: 1;
+}
+
+.score_button > p {
+    font-family: Bold;
+    font-size: var(--button_font_size);
+    color: var(--color_main);
+}
+
+@media (width > 1000px) {
+    :is(.restart_button, .score_button):hover {
+        box-shadow: var(--button_box_shadow);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (width <= 600px) {
+    :root {
+        --cell_width: 20vmin;
+    }
+}
+
+@media (width <= 400px) {
+    :root {
+        --cell_width: 26vmin;
+    }
+}

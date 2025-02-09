@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tic-Tac-Toe</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="index.css" />
+
+        <!-- JS -->
+        <script src="index.js" defer></script>
+    </head>
+    <body class="dollar">
+        <main>
+            <!-- Player details on the top -->
+            <div class="top_details">
+                <div class="scoreboard">
+                    <button class="score_button score_button_X">
+                        <svg class="cross_svg" viewBox="0 0 100 100">
+                            <line x1="15" y1="15" x2="85" y2="85" />
+                            <line x1="85" y1="15" x2="15" y2="85" />
+                        </svg>
+                        <p class="score_X">-</p>
+                    </button>
+                    <button class="score_button score_button_O">
+                        <svg class="circle_svg" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="35" />
+                        </svg>
+                        <p class="score_O">-</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- The board of the game -->
+            <div class="board">
+                <div class="cell">
+                    <svg class="circle_svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="35" />
+                    </svg>
+                    <svg class="cross_svg" viewBox="0 0 100 100">
+                        <line x1="15" y1="15" x2="85" y2="85" />
+                        <line x1="85" y1="15" x2="15" y2="85" />
+                    </svg>
+                </div>
+                <div class="cell">
+                    <svg class="circle_svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="35" />
+                    </svg>
+                    <svg class="cross_svg" viewBox="0 0 100 100">
+                        <line x1="15" y1="15" x2="85" y2="85" />
+                        <line x1="85" y1="15" x2="15" y2="85" />
+                    </svg>
+                </div>
+                <div class="cell">
+                    <svg class="circle_svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="35" />
+                    </svg>
+                    <svg class="cross_svg" viewBox="0 0 100 100">
+                        <line x1="15" y1="15" x2="85" y2="85" />
+                        <line x1="85" y1="15" x2="15" y2="85" />
+                    </svg>
+                </div>
+                <div class="cell">
+                    <svg class="circle_svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="35" />
+                    </svg>
+                    <svg class="cross_svg" viewBox="0 0 100 100">
+                        <line x1="15" y1="15" x2="85" y2="85" />
+                        <line x1="85" y1="15" x2="15" y2="85" />
+                    </svg>
+                </div>
+                <div class="cell">
+                    <svg class="circle_svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="35" />
+                    </svg>
+                    <svg class="cross_svg" viewBox="0 0 100 100">
+                        <line x1="15" y1="15" x2="85" y2="85" />
+                        <line x1="85" y1="15" x2="15" y2="85" />
+                    </svg>
+                </div>
+                <div class="cell">
+                    <svg class="circle_svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="35" />
+                    </svg>
+                    <svg class="cross_svg" viewBox="0 0 100 100">
+                        <line x1="15" y1="15" x2="85" y2="85" />
+                        <line x1="85" y1="15" x2="15" y2="85" />
+                    </svg>
+                </div>
+                <div class="cell">
+                    <svg class="circle_svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="35" />
+                    </svg>
+                    <svg class="cross_svg" viewBox="0 0 100 100">
+                        <line x1="15" y1="15" x2="85" y2="85" />
+                        <line x1="85" y1="15" x2="15" y2="85" />
+                    </svg>
+                </div>
+                <div class="cell">
+                    <svg class="circle_svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="35" />
+                    </svg>
+                    <svg class="cross_svg" viewBox="0 0 100 100">
+                        <line x1="15" y1="15" x2="85" y2="85" />
+                        <line x1="85" y1="15" x2="15" y2="85" />
+                    </svg>
+                </div>
+                <div class="cell">
+                    <svg class="circle_svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="35" />
+                    </svg>
+                    <svg class="cross_svg" viewBox="0 0 100 100">
+                        <line x1="15" y1="15" x2="85" y2="85" />
+                        <line x1="85" y1="15" x2="15" y2="85" />
+                    </svg>
+                </div>
+
+                <!-- A message to show after each game -->
+                <div class="winning_message">
+                    <div class="winning_mark_container">
+                        <svg class="circle_svg" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="35" />
+                        </svg>
+                        <svg class="cross_svg" viewBox="0 0 100 100">
+                            <line x1="15" y1="15" x2="85" y2="85" />
+                            <line x1="85" y1="15" x2="15" y2="85" />
+                        </svg>
+                    </div>
+
+                    <h1></h1>
+                    <p>(Click to continue)</p>
+                </div>
+            </div>
+
+            <!-- Button to restart the game -->
+            <button class="restart_button">Restart</button>
+        </main>
+    </body>
+</html>
