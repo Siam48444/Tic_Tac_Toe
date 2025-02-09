@@ -105,15 +105,12 @@ function handle_clicks(e) {
 }
 
 
-function place_the_mark(cell, current_turn) {
-    // Add current player's mark (X or O) to the cell
-    cell.classList.add(current_turn); 
-}
+// Add current player's mark (X or O) to the cell
+function place_the_mark(cell, current_turn) { cell.classList.add(current_turn); }
 
 
-function swap_turn() {
-    circle_turn = !circle_turn; // Switch turns between X and O
-}
+// Switch turns between X and O
+function swap_turn() { circle_turn = !circle_turn; }
 
 
 function is_winner(current_turn) {
