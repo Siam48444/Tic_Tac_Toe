@@ -37,6 +37,11 @@
     --color_main: #444444;
     --color_sub: #dddddd;
 }
+.retro {
+    --color_bg: #dad3c1;
+    --color_main: #1d1b17;
+    --color_sub: #c8c3b3;
+}
 
 
 :root {
@@ -242,7 +247,7 @@ main {
     padding: var(--button_padding);
     background-color: var(--color_sub);
     outline: none;
-    border: solid 0.01em var(--color_main);
+    border: none;
     border-radius: var(--button_border_radius);
     font-family: "Inter_Medium";
     font-size: var(--button_font_size);
@@ -282,7 +287,7 @@ main {
     padding: var(--button_padding);
     background-color: var(--color_sub);
     outline: none;
-    border: solid 0.01em var(--color_main);
+    border: none;
     border-radius: var(--button_border_radius);
     cursor: pointer;
 
