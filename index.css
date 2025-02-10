@@ -21,7 +21,7 @@
     --color_main: #3a3a3a;
     --color_sub: #dddddd;
 
-    --cell_width: clamp(4em, 16vmin, 18em);
+    --cell_width: clamp(4em, 16vmin, 15em);
     --cell_border: solid 0.05em var(--color_main);
 
     --mark_size: calc(var(--cell_width) * 0.9);
@@ -141,10 +141,6 @@ main {
 .cell.circle > .cross_svg { display: none; } /* Remove the cross in the circle cell */
 
 
-/* Disable the cursor */
-.cell:is(.cross, .circle) { cursor: not-allowed; }
-
-
 /* Winning state */
 .cell.won_cell { 
     background-color: var(--color_main); 
@@ -154,6 +150,13 @@ main {
 
 .cell.won_cell > :is(.circle_svg, .cross_svg) { 
     stroke: var(--color_bg);
+
+    /* animation: winner 1s forwards; */
+}
+
+/* Animation for the winner mark */
+@keyframes winner {
+    from { stroke-dasharray: 0; stroke-dashoffset: 0; }
 }
 
 
@@ -179,7 +182,8 @@ main {
 
     transition-property: opacity, transform;
     transition-duration: var(--transition_duration_fast);
-    transition-delay: var(--transition_duration_medium);
+    /* transition-delay: var(--transition_duration_medium); */
+    transition-delay: 20s;
 }
 
 .winning_mark_container {
