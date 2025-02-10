@@ -21,7 +21,7 @@
     --color_main: #3a3a3a;
     --color_sub: #dddddd;
 
-    --cell_width: clamp(3em, 15vmin, 18em);
+    --cell_width: clamp(4em, 16vmin, 18em);
     --cell_border: solid 0.05em var(--color_main);
 
     --mark_size: calc(var(--cell_width) * 0.9);
@@ -280,8 +280,8 @@ main {
 .score_button > svg {
     fill: none;
     stroke: var(--color_main);
-    stroke-width: calc(var(--mark_thickness) * 1.5);
-    width: calc(var(--button_font_size) * 1.2);
+    stroke-width: calc(var(--mark_thickness) * 1.3);
+    width: calc(var(--button_font_size) * 1.25);
     aspect-ratio: 1;
 }
 
@@ -307,10 +307,10 @@ main {
 
 
 
-
-@media (width <= 600px) {
+/* Media Queries */
+@media (width <= 500px) {
     :root {
-        --cell_width: 20vmin;
+        --cell_width: 23vmin;
     }
 }
 
