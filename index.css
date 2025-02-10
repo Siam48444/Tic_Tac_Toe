@@ -48,6 +48,11 @@
     --color_main: #e2b714;
     --color_sub: #2c2e31;
 }
+.moonlight {
+    --color_bg: #191f28;
+    --color_main: #c69f68;
+    --color_sub: #141a22;
+}
 
 
 *,
