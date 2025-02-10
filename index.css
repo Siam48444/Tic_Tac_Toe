@@ -16,12 +16,28 @@
 }
 
 
-/* Themes */
 :root {
-    --color_bg: #eeeeee;
+    --color_bg: #eeeeee;    
     --color_main: #3a3a3a;
     --color_sub: #dddddd;
+
+    --cell_width: clamp(4em, 16vmin, 15em);
+
+    --mark_size: calc(var(--cell_width) * 0.9);
+    --mark_thickness: 1em;
+
+    --button_border_radius: clamp(0.5em, 0.8vmin, 0.8em);
+    --button_padding: clamp(0.5em, 1vmin, 1.3em) clamp(1em, 2vmin, 2.6em);
+    --button_font_size: clamp(0.9em, 1.5vmin, 1em);
+
+    --winning_message_heading_size: calc(var(--cell_width) * 0.55);
+
+    --transition_duration_fast: 300ms;
+    --transition_duration_medium: calc(var(--transition_duration_fast) + 200ms);
 }
+
+
+/* Themes */
 .dollar {
     --color_bg: #e4e4d4;
     --color_main: #415041;
@@ -33,25 +49,6 @@
     --color_sub: #2c2e31;
 }
 
-
-:root {
-    --cell_width: clamp(4em, 16vmin, 15em);
-    --cell_border: solid 0.05em var(--color_main);
-
-    --mark_size: calc(var(--cell_width) * 0.9);
-    --mark_thickness: 1em;
-
-    --button_border: solid 0.01em var(--color_main);
-    --button_border_radius: clamp(0.5em, 0.8vmin, 0.8em);
-    --button_padding: clamp(0.5em, 1vmin, 1.3em) clamp(1em, 2vmin, 2.6em);
-    --button_font_size: clamp(0.9em, 1.5vmin, 1em);
-    --button_box_shadow: 0 0.2em var(--color_main);
-
-    --winning_message_heading_size: calc(var(--cell_width) * 0.55);
-
-    --transition_duration_fast: 300ms;
-    --transition_duration_medium: calc(var(--transition_duration_fast) + 200ms);
-}
 
 *,
 *::after,
@@ -98,7 +95,7 @@ main {
     width: var(--cell_width);
     aspect-ratio: 1;
     background-color: var(--color_bg);
-    border: var(--cell_border);
+    border: solid 0.05em var(--color_main);
     position: relative;
     cursor: pointer;
 }
@@ -239,7 +236,7 @@ main {
     padding: var(--button_padding);
     background-color: var(--color_sub);
     outline: none;
-    border: var(--button_border);
+    border: solid 0.01em var(--color_main);
     border-radius: var(--button_border_radius);
     font-family: "Inter_Medium";
     font-size: var(--button_font_size);
@@ -279,7 +276,7 @@ main {
     padding: var(--button_padding);
     background-color: var(--color_sub);
     outline: none;
-    border: var(--button_border);
+    border: solid 0.01em var(--color_main);
     border-radius: var(--button_border_radius);
     cursor: pointer;
 
@@ -287,7 +284,7 @@ main {
 }
 
 .score_button.active_turn {
-    box-shadow: var(--button_box_shadow);
+    box-shadow: 0 0.2em var(--color_main);
 }
 
 .score_button > svg {
@@ -306,7 +303,7 @@ main {
 
 @media (width > 1000px) {
     :is(.restart_button, .score_button):hover {
-        box-shadow: var(--button_box_shadow);
+        box-shadow: 0 0.2em var(--color_main);
     }
 }
 
