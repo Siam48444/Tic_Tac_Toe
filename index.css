@@ -17,10 +17,6 @@
 
 
 :root {
-    --color_bg: #eeeeee;    
-    --color_main: #3a3a3a;
-    --color_sub: #dddddd;
-
     --cell_width: clamp(4em, 16vmin, 15em);
 
     --mark_size: calc(var(--cell_width) * 0.9);
