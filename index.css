@@ -16,11 +16,25 @@
 }
 
 
+/* Themes */
 :root {
     --color_bg: #eeeeee;
     --color_main: #3a3a3a;
     --color_sub: #dddddd;
+}
+.dollar {
+    --color_bg: #e4e4d4;
+    --color_main: #415041;
+    --color_sub: #cbd0bf;
+}
+.serika_dark {
+    --color_bg: #323437;
+    --color_main: #e2b714;
+    --color_sub: #2c2e31;
+}
 
+
+:root {
     --cell_width: clamp(4em, 16vmin, 15em);
     --cell_border: solid 0.05em var(--color_main);
 
@@ -38,20 +52,6 @@
     --transition_duration_fast: 300ms;
     --transition_duration_medium: calc(var(--transition_duration_fast) + 200ms);
 }
-
-
-/* Themes */
-.dollar {
-    --color_bg: #e4e4d4;
-    --color_main: #415041;
-    --color_sub: #cbd0bf;
-}
-.serika_dark {
-    --color_bg: #323437;
-    --color_main: #e2b714;
-    --color_sub: #2c2e31;
-}
-
 
 *,
 *::after,
