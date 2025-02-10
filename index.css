@@ -16,6 +16,28 @@
 }
 
 
+:root {
+    --color_bg: #eeeeee;
+    --color_main: #444444;
+    --color_sub: #dddddd;
+
+    --cell_width: clamp(4em, 16vmin, 15em);
+
+    --mark_size: calc(var(--cell_width) * 0.9);
+    --mark_thickness: 1em;
+
+    --button_border_radius: clamp(0.5em, 0.8vmin, 0.8em);
+    --button_padding: clamp(0.5em, 1vmin, 1.3em) clamp(1em, 2vmin, 2.6em);
+    --button_font_size: clamp(0.9em, 1.8vmin, 1em);
+    --button_box_shadow_offset: 0 0.25em;
+
+    --winning_message_heading_size: calc(var(--cell_width) * 0.55);
+
+    --transition_duration_fast: 300ms;
+    --transition_duration_medium: calc(var(--transition_duration_fast) + 200ms);
+}
+
+
 /* Themes */
 .dollar {
     --color_bg: #e4e4d4;
@@ -32,11 +54,6 @@
     --color_main: #c69f68;
     --color_sub: #141a22;
 }
-.paper {
-    --color_bg: #eeeeee;
-    --color_main: #444444;
-    --color_sub: #dddddd;
-}
 .retro {
     --color_bg: #dad3c1;
     --color_main: #1d1b17;
@@ -48,23 +65,6 @@
     --color_sub: #2b2b2b;
 }
 
-
-:root {
-    --cell_width: clamp(4em, 16vmin, 15em);
-
-    --mark_size: calc(var(--cell_width) * 0.9);
-    --mark_thickness: 1em;
-
-    --button_border_radius: clamp(0.5em, 0.8vmin, 0.8em);
-    --button_padding: clamp(0.5em, 1vmin, 1.3em) clamp(1em, 2vmin, 2.6em);
-    --button_font_size: clamp(0.9em, 1.8vmin, 1em);
-    --button_box_shadow_offset: 0 0.25em;
-
-    --winning_message_heading_size: calc(var(--cell_width) * 0.55);
-
-    --transition_duration_fast: 300ms;
-    --transition_duration_medium: calc(var(--transition_duration_fast) + 200ms);
-}
 
 *,
 *::after,
