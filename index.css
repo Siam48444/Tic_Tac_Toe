@@ -128,13 +128,23 @@ main {
 
 
 /* X marks */
-.cell > .cross_svg { stroke-dasharray: 111; stroke-dashoffset: 111; }
-.cell.cross > .cross_svg { stroke-dashoffset: 0; }
+.cell > .cross_svg { 
+    stroke-dasharray: 111; 
+    stroke-dashoffset: 111; 
+}
+.cell.cross > .cross_svg { 
+    stroke-dashoffset: 0; 
+}
 
 
 /* O marks */
-.cell > .circle_svg { stroke-dasharray: 222; stroke-dashoffset: 222; }
-.cell.circle > .circle_svg { stroke-dashoffset: 0; }
+.cell > .circle_svg { 
+    stroke-dasharray: 222; 
+    stroke-dashoffset: 222; 
+}
+.cell.circle > .circle_svg { 
+    stroke-dashoffset: 0; 
+}
 
 
 .cell.cross > .circle_svg { display: none; } /* Remove the circle in the cross cell */
