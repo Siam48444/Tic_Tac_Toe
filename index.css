@@ -161,12 +161,12 @@ main {
 .cell.won_cell > :is(.circle_svg, .cross_svg) { 
     stroke: var(--color_bg);
 
-    animation: winner 1s forwards;
+    animation: won_stroke_animation var(--transition_duration_fast) ease-in-out forwards;
 }
 
 /* Animation for the winner mark */
-@keyframes winner {
-    from { stroke-dasharray: 0; stroke-dashoffset: 0; }
+@keyframes won_stroke_animation {
+    from { stroke-dashoffset: 222; }
 }
 
 
@@ -192,8 +192,7 @@ main {
 
     transition-property: opacity, transform;
     transition-duration: var(--transition_duration_fast);
-    /* transition-delay: var(--transition_duration_medium); */
-    transition-delay: 20s;
+    transition-delay: var(--transition_duration_medium);
 }
 
 .winning_mark_container {

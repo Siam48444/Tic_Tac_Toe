@@ -170,5 +170,5 @@ function end_the_game(win, winning_cells = []) {
     }
 
     // Add pointer events to the message after a delay
-    setTimeout(() => { winning_message.style.pointerEvents = "all"; }, 600);
+    setTimeout(() => { winning_message.style.pointerEvents = "all"; }, 800);
 }
