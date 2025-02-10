@@ -54,6 +54,11 @@
     --color_main: #c69f68;
     --color_sub: #141a22;
 }
+.paper {
+    --color_bg: #eeeeee;
+    --color_main: #444444;
+    --color_sub: #dddddd;
+}
 
 
 *,
