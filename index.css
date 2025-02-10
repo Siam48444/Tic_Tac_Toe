@@ -1,17 +1,17 @@
 @font-face {
-    font-family: "Regular";
+    font-family: "Inter_Regular";
     src: url(Fonts/Inter_28pt-Regular.ttf);
 }
 @font-face {
-    font-family: "Medium";
+    font-family: "Inter_Medium";
     src: url(Fonts/Inter_28pt-Medium.ttf);
 }
 @font-face {
-    font-family: "Bold";
+    font-family: "Inter_Bold";
     src: url(Fonts/Inter_28pt-Bold.ttf);
 }
 @font-face {
-    font-family: "Extrabold";
+    font-family: "Inter_Extrabold";
     src: url(Fonts/Inter_28pt-ExtraBold.ttf);
 }
 
@@ -221,14 +221,14 @@ main {
 .winning_message.circle > .winning_mark_container > .cross_svg { display: none; }
 
 .winning_message > h1 {
-    font-family: "Extrabold";
+    font-family: "Inter_Extrabold";
     font-size: var(--winning_message_heading_size);
     color: var(--color_main);
     line-height: 1;
 }
 
 .winning_message > p {
-    font-family: "Medium";
+    font-family: "Inter_Medium";
     font-size: calc(var(--winning_message_heading_size) * 0.25);
     color: var(--color_main);
 }
@@ -241,7 +241,7 @@ main {
     outline: none;
     border: var(--button_border);
     border-radius: var(--button_border_radius);
-    font-family: "Medium";
+    font-family: "Inter_Medium";
     font-size: var(--button_font_size);
     color: var(--color_main);
     cursor: pointer;
@@ -299,7 +299,7 @@ main {
 }
 
 .score_button > p {
-    font-family: "Bold";
+    font-family: "Inter_Bold";
     font-size: var(--button_font_size);
     color: var(--color_main);
 }
