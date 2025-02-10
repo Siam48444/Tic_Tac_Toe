@@ -1,8 +1,8 @@
-#Tic-Tac-Toe Game
+# Tic-Tac-Toe Game
 
 A simple and interactive Tic-Tac-Toe game implemented with HTML, CSS, and JavaScript. The game features smooth animations and a minimalist design inspired by the Google Doodle Tic-Tac-Toe.
 
-###How to Play
+### How to Play
 
 1. Click on an empty cell to place your mark (X or O).
 2. Players take turns marking the grid.
