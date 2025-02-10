@@ -151,7 +151,7 @@ main {
 .cell.won_cell > :is(.circle_svg, .cross_svg) { 
     stroke: var(--color_bg);
 
-    /* animation: winner 1s forwards; */
+    animation: winner 1s forwards;
 }
 
 /* Animation for the winner mark */
