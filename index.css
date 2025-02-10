@@ -1,18 +1,18 @@
 @font-face {
     font-family: "Inter_Regular";
-    src: url(Fonts/Inter_28pt-Regular.ttf);
+    src: url(./Fonts/Inter_28pt-Regular.ttf);
 }
 @font-face {
     font-family: "Inter_Medium";
-    src: url(Fonts/Inter_28pt-Medium.ttf);
+    src: url(./Fonts/Inter_28pt-Medium.ttf);
 }
 @font-face {
     font-family: "Inter_Bold";
-    src: url(Fonts/Inter_28pt-Bold.ttf);
+    src: url(./Fonts/Inter_28pt-Bold.ttf);
 }
 @font-face {
     font-family: "Inter_Extrabold";
-    src: url(Fonts/Inter_28pt-ExtraBold.ttf);
+    src: url(./Fonts/Inter_28pt-ExtraBold.ttf);
 }
 
 
