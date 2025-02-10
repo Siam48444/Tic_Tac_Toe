@@ -29,6 +29,7 @@
     --button_border_radius: clamp(0.5em, 0.8vmin, 0.8em);
     --button_padding: clamp(0.5em, 1vmin, 1.3em) clamp(1em, 2vmin, 2.6em);
     --button_font_size: clamp(0.9em, 1.5vmin, 1em);
+    --button_box_shadow_offset: 0 0.25em;
 
     --winning_message_heading_size: calc(var(--cell_width) * 0.55);
 
@@ -289,7 +290,7 @@ main {
 }
 
 .score_button.active_turn {
-    box-shadow: 0 0.2em var(--color_main);
+    box-shadow: var(--button_box_shadow_offset) var(--color_main);
 }
 
 .score_button > svg {
@@ -308,7 +309,7 @@ main {
 
 @media (width > 1000px) {
     :is(.restart_button, .score_button):hover {
-        box-shadow: 0 0.2em var(--color_main);
+        box-shadow: var(--button_box_shadow_offset) var(--color_main);
     }
 }
 
