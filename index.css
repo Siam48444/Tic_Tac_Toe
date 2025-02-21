@@ -223,6 +223,21 @@ main {
     position: relative;
 }
 
+.mode_selection {
+    width: 100%;
+    padding: var(--button_padding);
+    background-color: var(--color_sub);
+    outline: none;
+    border: none;
+    border-radius: var(--button_border_radius);
+    cursor: pointer;
+    font-family: "Inter_Medium";
+    font-size: var(--button_font_size);
+    color: var(--color_main);
+
+    transition: box-shadow var(--transition_duration_fast);
+}
+
 .scoreboard {
     display: flex;
     align-items: center;
@@ -448,7 +463,7 @@ main {
 
 
 @media (width >=1000px) {
-    :is(.restart_button, .score_button, .theme_button, .sound_button):hover {
+    :is(.restart_button, .score_button, .theme_button, .sound_button, .mode_selection):hover {
         box-shadow: var(--button_box_shadow_offset) var(--color_main);
     }
 

@@ -1,8 +1,8 @@
 import { winning_sound, draw_sound, play_sound, is_muted, toggle_sound, sound_button } from "./Assets/Sounds/sounds.js";
-import { score_button_O, score_button_X, reset_scores, update_scores } from "./JS/scores.js";
+import { disable_turn_selection, reset_scores, update_scores } from "./JS/scores.js";
 import { CROSS_CLASS, CIRCLE_CLASS, is_winner, is_draw, highlight_winning_cells } from "./JS/rules.js";
-import { get_user_turn, choose_O, choose_X, circle_turn, swap_turn, update_turn_indicator, place_the_mark } from "./JS/turns.js";
-import { get_ai_move } from "./AI/ai_easy.js";
+import { get_user_turn, circle_turn, swap_turn, update_turn_indicator, place_the_mark, reset_turn } from "./JS/turns.js";
+import { place_easy_ai_move } from "./AI/ai_easy.js";
 
 
 
@@ -12,6 +12,32 @@ const winner_text = document.querySelector(".winning_message h1");
 const restart_button = document.querySelector(".restart_button");
 
 let game_over = false; // Tracks if the game is over
+ 
+ 
+ 
+const mode_selection = document.getElementById("mode_selection");
+let easy_ai_enabled = false;
+
+// Game mode selection
+mode_selection.addEventListener("change", (e) => {
+    let mode = e.target.value;
+    
+    if (mode === "easy") {
+        easy_ai_enabled = true;
+        reset_scores();
+        reset_turn();
+        start_the_game();
+        disable_turn_selection();
+    }
+    else if (mode === "two players") {
+        easy_ai_enabled = false;
+        reset_scores();
+        reset_turn();
+        start_the_game();
+    }
+
+});
+
 
 
 // Let the user choose to mute or unmute
@@ -29,7 +55,7 @@ restart_button.addEventListener("click", () => { // Reset the scores and restart
 
 
 start_the_game(); 
-function start_the_game() {
+export function start_the_game() {
     winning_message.classList.remove(CROSS_CLASS, CIRCLE_CLASS, "show_draw"); // Hide winning message
     winning_message.style.pointerEvents = "none"; // Remove pointer events to the message after a delay
 
@@ -47,13 +73,11 @@ function start_the_game() {
 
 
 
-function handle_clicks(e) {
-    get_ai_move(cells);
+export function handle_clicks(e) {
     if (game_over) return null; // Ignore if game is over
 
     // Disable user turn select by removing event listeners
-    score_button_X.removeEventListener("click", choose_X);
-    score_button_O.removeEventListener("click", choose_O);
+    disable_turn_selection();
 
     const cell = e.target; // Get clicked cell
     const current_turn = circle_turn ? CIRCLE_CLASS : CROSS_CLASS; // Determine current player's turn
@@ -63,19 +87,33 @@ function handle_clicks(e) {
 
     if (winning_cells) {
         end_the_game(true, winning_cells); // End game if there's a winner
+        return null;
     }
     else if (is_draw(cells)) {
         end_the_game(false); // End game if it's a draw
+        return null;
     }
     else {
         swap_turn(); 
-        update_turn_indicator();
+        update_turn_indicator();      
+    }
+
+
+
+    // Place AI marks
+    if (easy_ai_enabled) {
+        place_easy_ai_move(cells);
+
+        winning_message.addEventListener("click", () => {
+            start_the_game();
+            reset_turn();
+        }); 
     }
 }
 
 
 
-function end_the_game(win, winning_cells = []) {
+export function end_the_game(win, winning_cells = []) {
     game_over = true; // Set game over to true
     
     if (win) {
@@ -98,4 +136,6 @@ function end_the_game(win, winning_cells = []) {
     // Add pointer events to the message after a delay
     setTimeout(() => { winning_message.style.pointerEvents = "all"; }, 800);
 }
+
+
 
