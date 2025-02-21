@@ -15,10 +15,10 @@ let game_over = false; // Tracks if the game is over
  
  
  
+// Game mode selection
 const mode_selection = document.getElementById("mode_selection");
 let easy_ai_enabled = false;
 
-// Game mode selection
 mode_selection.addEventListener("change", (e) => {
     let mode = e.target.value;
     
@@ -35,7 +35,6 @@ mode_selection.addEventListener("change", (e) => {
         reset_turn();
         start_the_game();
     }
-
 });
 
 
@@ -104,9 +103,17 @@ export function handle_clicks(e) {
     if (easy_ai_enabled) {
         place_easy_ai_move(cells);
 
-        winning_message.addEventListener("click", () => {
-            start_the_game();
+        winning_message.addEventListener("click", () => { // Start the next round
             reset_turn();
+            start_the_game();
+            disable_turn_selection();
+        }); 
+        
+        restart_button.addEventListener("click", () => { // Reset the scores and restart the game
+            reset_scores();
+            reset_turn();
+            start_the_game();
+            disable_turn_selection();
         }); 
     }
 }
