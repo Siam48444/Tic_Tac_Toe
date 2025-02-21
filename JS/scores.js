@@ -1,7 +1,3 @@
-import { choose_O, choose_X } from "./turns.js";
-
-
-
 export const score_button_X = document.querySelector(".score_button_X");
 export const score_button_O = document.querySelector(".score_button_O");
 export const score_X_paragraph = document.querySelector(".score_X");
@@ -36,8 +32,3 @@ export function update_scores(circle_turn) {
 
 
 
-// Disable user turn selection
-export function disable_turn_selection() {
-    score_button_X.removeEventListener("click", choose_X);
-    score_button_O.removeEventListener("click", choose_O);
-}

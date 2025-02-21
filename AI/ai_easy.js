@@ -30,14 +30,14 @@ export function place_easy_ai_move(cells) {
         if (ai_cell) {
             place_the_mark(ai_cell, CIRCLE_CLASS);
 
-            const ai_winning_cells = is_winner(cells, CIRCLE_CLASS);
+            const ai_winning_cells = is_winner(cells, CIRCLE_CLASS); // Check if current move is a winning move
 
             if (ai_winning_cells) {
-                end_the_game(true, ai_winning_cells);
+                end_the_game(true, ai_winning_cells); // End game if there's a winner
                 return null;
             }
             else if (is_draw(cells)) {
-                end_the_game(false);
+                end_the_game(false); // End game if it's a draw
                 return null;
             }
             else {

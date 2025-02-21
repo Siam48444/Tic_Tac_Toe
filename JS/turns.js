@@ -66,3 +66,11 @@ export function place_the_mark(cell, current_turn) {
         play_sound(click_sound_O, is_muted);
     }
 }
+
+
+
+// Disable user turn selection
+export function disable_turn_selection() {
+    score_button_X.removeEventListener("click", choose_X);
+    score_button_O.removeEventListener("click", choose_O);
+}

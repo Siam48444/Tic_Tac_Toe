@@ -223,6 +223,23 @@ main {
     position: relative;
 }
 
+.custom_select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.5em;
+    position: relative;
+}
+
+.custom_select > svg {
+    fill: var(--color_main);
+    width: calc(var(--button_font_size) * 0.7);
+    position: absolute;
+    right: clamp(1em, 2vmin, 2.6em);
+    pointer-events: none;
+}
+
 .mode_selection {
     width: 100%;
     padding: var(--button_padding);
@@ -235,8 +252,18 @@ main {
     font-size: var(--button_font_size);
     color: var(--color_main);
 
+    appearance: none;
+    -webkit-appearance: none; /* For Safari */
+    -moz-appearance: none; /* For Firefox */
+
     transition: box-shadow var(--transition_duration_fast);
 }
+
+/* Hide default arrow in IE/Edge */
+.mode_selection::-ms-expand { 
+    display: none;
+}
+
 
 .scoreboard {
     display: flex;
