@@ -11,7 +11,7 @@ export function get_easy_ai_move(cells) {
     });
 
     // No move if the board is full
-    if (available_cells.length === 0) return null;
+    if (available_cells.length === 0) return;
 
     // Choose a random available cell
     const random_index = Math.floor(Math.random() * available_cells.length);
@@ -34,11 +34,11 @@ export function place_easy_ai_move(cells) {
 
             if (ai_winning_cells) {
                 end_the_game(true, ai_winning_cells); // End game if there's a winner
-                return null;
+                return;
             }
             else if (is_draw(cells)) {
                 end_the_game(false); // End game if it's a draw
-                return null;
+                return;
             }
             else {
                 swap_turn();

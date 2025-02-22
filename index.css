@@ -341,7 +341,7 @@ main {
     border: none;
     border-radius: 50%;
     aspect-ratio: 1;
-    padding: clamp(0.5em, 1vmin, 1.5em);
+    padding: clamp(0.5em, 0.8vmin, 1.5em);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -350,13 +350,13 @@ main {
     transition: box-shadow var(--transition_duration_fast);
 }
 
-.sound_button > .sound_svg {
+.sound_button > svg {
     fill: var(--color_main);
-    width: calc(var(--button_font_size) * 1.6);
+    width: calc(var(--button_font_size) * 1.8);
 }
 
 /* Sound enabled condition */
-.sound_button > .sound_svg > #sound_muted_line {
+.sound_button > svg > line {
     stroke: var(--color_main);
     stroke-width: 2;
     fill: none;
@@ -369,7 +369,7 @@ main {
 }
 
 /* Sound svg for muted condition */
-.sound_button.muted > .sound_svg > #sound_muted_line {
+.sound_button.muted > .sound_svg > line {
     stroke-dashoffset: 0;
 }
 
@@ -411,7 +411,6 @@ main {
     align-items: center;
     justify-content: start;
     position: relative;
-    padding-bottom: 0.3em;
 }
 
 .theme_top_head {
@@ -473,7 +472,7 @@ main {
     align-items: center;
     justify-content: center;
     gap: calc(var(--button_font_size) * 0.4); 
-    padding: var(--theme_option_padding);
+    padding: var(--theme_indicator_padding);
     border-radius: var(--button_border_radius);
 }
 
@@ -490,7 +489,7 @@ main {
 
 
 @media (width >=1000px) {
-    :is(.restart_button, .score_button, .theme_button, .sound_button, .mode_selection):hover {
+    :is(.restart_button, .theme_button, .sound_button, .mode_selection):hover {
         box-shadow: var(--button_box_shadow_offset) var(--color_main);
     }
 

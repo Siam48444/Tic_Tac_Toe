@@ -6,54 +6,49 @@ import { place_easy_ai_move } from "./AI/ai_easy.js";
 
 
 
-const cells = document.querySelectorAll(".cell");
+export const cells = document.querySelectorAll(".cell");
 const winning_message = document.querySelector(".winning_message");
 const winner_text = document.querySelector(".winning_message h1");
 const restart_button = document.querySelector(".restart_button");
 
 let game_over = false; // Tracks if the game is over
- 
- 
- 
+
+
+
 // Game mode selection
 const mode_selection = document.getElementById("mode_selection");
-let easy_ai_enabled = false;
+let mode = "two players"; // Keeps track of the game mode
+let ai_enabled = false; // Tracks if AI is enabled
 
-mode_selection.addEventListener("change", (e) => {
-    let mode = e.target.value;
-
-    if (mode === "easy") {
-        easy_ai_enabled = true;
-        reset_scores();
-        reset_turn();
-        start_the_game();
-    }
-    else if (mode === "two players") {
-        easy_ai_enabled = false;
-        reset_scores();
-        reset_turn();
-        start_the_game();
-    }
+mode_selection.addEventListener("change", e => {
+    mode = e.target.value; // Set the game mode 
+    ai_enabled = (mode !== "two players"); // Check if ai mode is enabled
     
 
+    // Usual settings after changing modes
+    reset_scores();
+    reset_turn();
+
     // Usual settings for ai mode
-    if (mode !== "two players") {
-        disable_turn_selection();
+    if (ai_enabled) {
+        disable_turn_selection(); // Disable turn selection in AI mode
+        start_the_game();
         
         // Start the next round
         winning_message.addEventListener("click", () => { 
             reset_turn();
             start_the_game();
-            disable_turn_selection();
-        }); 
-
+        });
+        
         // Reset the scores and restart the game
-        restart_button.addEventListener("click", () => { 
-            reset_scores();
+        restart_button.addEventListener("click", () => {
+            reset_scores(); 
             reset_turn();
-            start_the_game();
-            disable_turn_selection();
+            start_the_game(); 
         }); 
+    }
+    else {
+        get_user_turn(); // Re-enable turn selection in Two-Player mode
     }
 });
 
@@ -81,7 +76,12 @@ export function start_the_game() {
 
     game_over = false; // Reset the game over state
 
-    get_user_turn(); // Let the user choose the first mark
+    if (!ai_enabled) {
+        get_user_turn(); // Only allow user to select turn in two-player mode
+    } else {
+        disable_turn_selection(); // Ensure turn selection is disabled in AI mode
+    }
+
     update_turn_indicator(); // Indicate the user turn graphically 
 
     cells.forEach(cell => {        
@@ -94,7 +94,7 @@ export function start_the_game() {
 
 
 export function handle_clicks(e) {
-    if (game_over) return null; // Ignore if game is over
+    if (game_over) return; // Ignore if game is over
 
     // Disable user turn select by removing event listeners
     disable_turn_selection();
@@ -108,11 +108,11 @@ export function handle_clicks(e) {
 
     if (winning_cells) {
         end_the_game(true, winning_cells); // End game if there's a winner
-        return null;
+        return;
     }
     else if (is_draw(cells)) {
         end_the_game(false); // End game if it's a draw
-        return null;
+        return;
     }
     else {
         swap_turn(); 
@@ -120,10 +120,8 @@ export function handle_clicks(e) {
     }
 
 
-    // Place AI marks (if enabled)
-    if (easy_ai_enabled && !game_over) {
-        place_easy_ai_move(cells);
-    }
+    // Place ai moves 
+    if (mode === "easy" && circle_turn) place_easy_ai_move(cells);
 }
 
 
@@ -151,6 +149,5 @@ export function end_the_game(win, winning_cells = []) {
     // Add pointer events to the message after a delay
     setTimeout(() => { winning_message.style.pointerEvents = "all"; }, 800);
 }
-
 
 
