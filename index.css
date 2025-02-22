@@ -1,4 +1,3 @@
-/* Navigation bar */
 nav {
     height: var(--nav_height);
     width: min(100%, 2000px);
@@ -10,7 +9,6 @@ nav {
     background-color: transparent;
     margin: auto;
 }
-
 
 main {
     width: min(100%, 2000px);
@@ -171,14 +169,14 @@ main {
 .winning_message.circle > .winning_mark_container > .cross_svg { display: none; }
 
 .winning_message > h1 {
-    font-family: "Inter_Extrabold";
+    font-family: "Extrabold";
     font-size: var(--winning_message_heading_size);
     color: var(--color_main);
     line-height: 1;
 }
 
 .winning_message > p {
-    font-family: "Inter_Medium";
+    font-family: "Medium";
     font-size: calc(var(--winning_message_heading_size) * 0.25);
     color: var(--color_main);
 }
@@ -202,13 +200,22 @@ main {
     outline: none;
     border: none;
     border-radius: var(--button_border_radius);
-    font-family: "Inter_Medium";
+    font-family: "Medium";
     font-size: var(--button_font_size);
     color: var(--color_main);
     cursor: pointer;
     width: calc(var(--cell_width) * 3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3em;
 
     transition: box-shadow var(--transition_duration_fast);
+}
+
+.restart_button > svg {
+    fill: var(--color_main);
+    width: calc(var(--button_font_size) * 1.4);
 }
 
 
@@ -248,7 +255,7 @@ main {
     border: none;
     border-radius: var(--button_border_radius);
     cursor: pointer;
-    font-family: "Inter_Medium";
+    font-family: "Medium";
     font-size: var(--button_font_size);
     color: var(--color_main);
 
@@ -302,7 +309,7 @@ main {
 }
 
 .score_button > p {
-    font-family: "Inter_Bold";
+    font-family: "Extrabold";
     font-size: var(--button_font_size);
     color: var(--color_main);
 }
@@ -315,7 +322,7 @@ main {
     outline: none;
     border: none;
     border-radius: var(--button_border_radius);
-    font-family: "Inter_Medium";
+    font-family: "Medium";
     font-size: var(--button_font_size);
     color: var(--color_main);
     cursor: pointer;
@@ -423,7 +430,7 @@ main {
 }
 
 .theme_top_head > p {
-    font-family: "Inter_Bold";
+    font-family: "Extrabold";
     font-size: var(--theme_head_font_size);
     color: var(--color_main);
 }
@@ -453,9 +460,10 @@ main {
     align-items: center;
     justify-content: space-between; 
     gap: 0.5em;   
-    font-family: "Inter_Regular";
+    font-family: "Regular";
     font-size: var(--button_font_size);
     color: var(--color_main);
+    text-align: left;
 
     transition: 
         color var(--transition_duration_fast),

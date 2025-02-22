@@ -24,7 +24,6 @@ mode_selection.addEventListener("change", e => {
     mode = e.target.value; // Set the game mode 
     ai_enabled = (mode !== "two players"); // Check if ai mode is enabled
     
-
     // Usual settings after changing modes
     reset_scores();
     reset_turn();
@@ -36,8 +35,10 @@ mode_selection.addEventListener("change", e => {
         
         // Start the next round
         winning_message.addEventListener("click", () => { 
-            reset_turn();
             start_the_game();
+            
+            // AI plays first if it won the last round
+            if (circle_turn) place_easy_ai_move(cells); 
         });
         
         // Reset the scores and restart the game
@@ -63,6 +64,7 @@ sound_button.addEventListener("click", toggle_sound);
 // Start the game by user clicks
 winning_message.addEventListener("click", start_the_game); // Start the next round
 restart_button.addEventListener("click", () => { // Reset the scores and restart the game
+    reset_turn();
     reset_scores(); 
     start_the_game(); 
 }); 
