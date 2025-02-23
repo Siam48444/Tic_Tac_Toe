@@ -208,14 +208,23 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.3em;
+    gap: 0.5em;
 
     transition: box-shadow var(--transition_duration_fast);
 }
 
 .restart_button > svg {
     fill: var(--color_main);
-    width: calc(var(--button_font_size) * 1.4);
+    width: var(--button_font_size);
+    aspect-ratio: 1;
+}
+
+.restart_button.restart_clicked > svg {
+    animation: restart_clicked var(--transition_duration_medium) forwards;
+}
+
+@keyframes restart_clicked {
+    to { rotate: 360deg; }
 }
 
 
@@ -299,6 +308,8 @@ main {
 .score_button.active_turn {
     box-shadow: var(--button_box_shadow_offset) var(--color_main);
 }
+
+.score_button.score_button_disabled { cursor: not-allowed; }
 
 .score_button > svg {
     fill: none;
@@ -411,7 +422,7 @@ main {
     height: 80%;
     width: calc(var(--cell_width) * 3.5);
     border: solid 0.1em var(--color_main);
-    border-radius: var(--button_font_size);
+    /* border-radius: var(--button_font_size); */
     overflow-x: hidden;
     display: flex;
     flex-direction: column;

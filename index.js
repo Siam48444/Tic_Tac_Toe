@@ -3,6 +3,7 @@ import { reset_scores, update_scores } from "./JS/scores.js";
 import { CROSS_CLASS, CIRCLE_CLASS, is_winner, is_draw, highlight_winning_cells } from "./JS/rules.js";
 import { disable_turn_selection, get_user_turn, circle_turn, swap_turn, update_turn_indicator, place_the_mark, reset_turn } from "./JS/turns.js";
 import { place_easy_ai_move } from "./AI/ai_easy.js";
+import { place_medium_ai_move } from "./AI/ai_medium.js";
 
 
 
@@ -35,10 +36,8 @@ mode_selection.addEventListener("change", e => {
         
         // Start the next round
         winning_message.addEventListener("click", () => { 
+            reset_turn();
             start_the_game();
-            
-            // AI plays first if it won the last round
-            if (circle_turn) place_easy_ai_move(cells); 
         });
         
         // Reset the scores and restart the game
@@ -49,6 +48,9 @@ mode_selection.addEventListener("change", e => {
         }); 
     }
     else {
+        start_the_game()
+        reset_turn();
+        reset_scores();
         get_user_turn(); // Re-enable turn selection in Two-Player mode
     }
 });
@@ -67,6 +69,12 @@ restart_button.addEventListener("click", () => { // Reset the scores and restart
     reset_turn();
     reset_scores(); 
     start_the_game(); 
+
+    // Restart button arrow animation
+    restart_button.classList.add("restart_clicked");
+    setTimeout(() => {
+        restart_button.classList.remove("restart_clicked");
+    }, 600);
 }); 
 
 
@@ -123,7 +131,12 @@ export function handle_clicks(e) {
 
 
     // Place ai moves 
-    if (mode === "easy" && circle_turn) place_easy_ai_move(cells);
+    if (ai_enabled && circle_turn && mode === "easy") {
+        place_easy_ai_move(cells);
+    }
+    else if (ai_enabled && circle_turn && (mode === "medium" || mode === "hard")) {
+        place_medium_ai_move(cells);
+    }
 }
 
 
@@ -139,7 +152,12 @@ export function end_the_game(win, winning_cells = []) {
         highlight_winning_cells(cells, winning_cells); 
         update_scores(circle_turn);
 
-        play_sound(winning_sound, is_muted); // Play the winning sound
+        if (ai_enabled && circle_turn) {
+            play_sound(draw_sound, is_muted); // Play the winning sound
+        }
+        else {
+            play_sound(winning_sound, is_muted);
+        }
     }
     else {
         winning_message.classList.add("show_draw"); // Show the draw class if there is no winner

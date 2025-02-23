@@ -13,10 +13,8 @@ export function get_easy_ai_move(cells) {
     // No move if the board is full
     if (available_cells.length === 0) return;
 
-    // Choose a random available cell
-    const random_index = Math.floor(Math.random() * available_cells.length);
-    
-    return available_cells[random_index];
+    // Return a random available cell
+    return available_cells[Math.floor(Math.random() * available_cells.length)];
 }
 
 
@@ -25,10 +23,10 @@ export function get_easy_ai_move(cells) {
 export function place_easy_ai_move(cells) {
     setTimeout(() => {
         const ai_cell = get_easy_ai_move(cells);
-        ai_cell.removeEventListener("click", handle_clicks); // Prevent user clicks
-
+        
         if (ai_cell) {
             place_the_mark(ai_cell, CIRCLE_CLASS);
+            ai_cell.removeEventListener("click", handle_clicks); // Prevent user clicks
 
             const ai_winning_cells = is_winner(cells, CIRCLE_CLASS); // Check if current move is a winning move
 
@@ -45,5 +43,9 @@ export function place_easy_ai_move(cells) {
                 update_turn_indicator();
             }
         }
+        else { 
+            return; 
+        }
+
     }, 100);
 }

@@ -44,15 +44,18 @@ html {
 }
 ::-webkit-scrollbar-track {
     background-color: #ffffff;
-    border-radius: 5em;
 }
 ::-webkit-scrollbar-thumb {
     background-color: var(--color_main);
-    border-radius: 5em;
+    cursor: grab;
 }
 
 
 :root {
+    --color_bg: #eeeeee;
+    --color_main: #444444;
+    --color_sub: #d0d4d9;
+    
     --cell_width: clamp(4em, 16vmin, 15em);
 
     --mark_size: calc(var(--cell_width) * 0.9);
@@ -71,7 +74,7 @@ html {
     --winning_message_heading_size: calc(var(--cell_width) * 0.5);
 
     --transition_duration_fast: 300ms;
-    --transition_duration_medium: calc(var(--transition_duration_fast) + 300ms);
+    --transition_duration_medium: 600ms;
 
     --theme_head_font_size: calc(var(--button_font_size) * 1.4);
     --theme_head_padding: clamp(1em, 1.5vmin, 1.5em);

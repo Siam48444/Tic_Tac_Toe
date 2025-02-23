@@ -14,7 +14,7 @@
 
         <!-- JS -->
         <script src="./index.js" defer type="module"></script>
-        <script src="./theme.js" defer></script>
+        <script src="./JS/theme.js" defer></script>
     </head>
     <body class="">
         <!-- Navigation bar -->
@@ -43,7 +43,7 @@
                         d="M0 64C0 28.7 28.7 0 64 0L352 0c35.3 0 64 28.7 64 64l0 64c0 35.3-28.7 64-64 64L64 192c-35.3 0-64-28.7-64-64L0 64zM160 352c0-17.7 14.3-32 32-32l0-16c0-44.2 35.8-80 80-80l144 0c17.7 0 32-14.3 32-32l0-32 0-90.5c37.3 13.2 64 48.7 64 90.5l0 32c0 53-43 96-96 96l-144 0c-8.8 0-16 7.2-16 16l0 16c17.7 0 32 14.3 32 32l0 128c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32l0-128z" />
                 </svg>
 
-                <p>Default Light</p>
+                <p></p>
             </button>
         </nav>
 
@@ -54,6 +54,8 @@
                 <div class="custom_select" title="Choose game mode">
                     <select id="mode_selection" class="mode_selection">
                         <option value="easy">😪 Easy</option>
+                        <option value="medium" selected>😎 Medium</option>
+                        <option value="hard" selected>😡 Hard</option>
                         <option value="two players" selected>🤝 Two Players</option>
                     </select>
 
@@ -182,7 +184,9 @@
 
             <!-- Button to restart the game -->
             <button class="restart_button" title="Reset scores and restart">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="30 -900 850 850"><path d="M440-122q-121-15-200.5-105.5T160-440q0-66 26-126.5T260-672l57 57q-38 34-57.5 79T240-440q0 88 56 155.5T440-202v80Zm80 0v-80q87-16 143.5-83T720-440q0-100-70-170t-170-70h-3l44 44-56 56-140-140 140-140 56 56-44 44h3q134 0 227 93t93 227q0 121-79.5 211.5T520-122Z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path d="M463.5 224l8.5 0c13.3 0 24-10.7 24-24l0-128c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8l119.5 0z" />
+                </svg>
                 Restart
             </button>
         </main>

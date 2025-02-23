@@ -12,6 +12,10 @@ export let circle_turn; // Tracks if it's O's turn
 export function get_user_turn() {
     score_button_X.addEventListener("click", choose_X);
     score_button_O.addEventListener("click", choose_O);
+
+    // Remove the not allowed cursor and let the user choose turn
+    score_button_X.classList.remove("score_button_disabled");
+    score_button_O.classList.remove("score_button_disabled");
 }
 
 export function choose_X() { 
@@ -73,4 +77,8 @@ export function place_the_mark(cell, current_turn) {
 export function disable_turn_selection() {
     score_button_X.removeEventListener("click", choose_X);
     score_button_O.removeEventListener("click", choose_O);
+
+    // Disable the turn selection by not allowing the cursor
+    score_button_X.classList.add("score_button_disabled");
+    score_button_O.classList.add("score_button_disabled");
 }
