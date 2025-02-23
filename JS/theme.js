@@ -38,7 +38,7 @@ if (stored_theme_name) {
     theme_text.innerText = stored_theme_name; 
 }
 else {
-    theme_text.innerText = "Default Ligth";
+    theme_text.innerText = "Default Light";
 }
 
 
