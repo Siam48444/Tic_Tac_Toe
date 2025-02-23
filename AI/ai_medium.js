@@ -47,41 +47,28 @@ export function get_medium_ai_move(cells) {
 
 
 export function place_medium_ai_move(cells) {
-    // Disable cell clicks until the ai puts its mark
-    for (let cell of cells) {
-        cell.removeEventListener("click", handle_clicks);
-    }
-
     const ai_cell = get_medium_ai_move(cells);
 
-    setTimeout(() => {
-        if (ai_cell) {
-            place_the_mark(ai_cell, CIRCLE_CLASS);
-            ai_cell.removeEventListener("click", handle_clicks); // Prevent user clicks
+    if (ai_cell) {
+        place_the_mark(ai_cell, CIRCLE_CLASS);
+        ai_cell.removeEventListener("click", handle_clicks); // Prevent user clicks
 
-            const ai_winning_cells = is_winner(cells, CIRCLE_CLASS); // Check if current move is a winning move
+        const ai_winning_cells = is_winner(cells, CIRCLE_CLASS); // Check if current move is a winning move
 
-            if (ai_winning_cells) {
-                end_the_game(true, ai_winning_cells); // End game if there's a winner
-                return;
-            }
-            else if (is_draw(cells)) {
-                end_the_game(false); // End game if it's a draw
-                return;
-            }
-            else {
-                swap_turn();
-                update_turn_indicator();
-            }
+        if (ai_winning_cells) {
+            end_the_game(true, ai_winning_cells); // End game if there's a winner
+            return;
         }
-        else { 
-            return; 
+        else if (is_draw(cells)) {
+            end_the_game(false); // End game if it's a draw
+            return;
         }
-        
-        // Enable cell clicks after the ai puts the mark
-        for (let cell of cells) {
-            cell.addEventListener("click", handle_clicks);
+        else {
+            swap_turn();
+            update_turn_indicator();
         }
-        
-    }, 300);
+    }
+    else { 
+        return; 
+    }
 }
