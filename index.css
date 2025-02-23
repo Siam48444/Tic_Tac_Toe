@@ -1,6 +1,6 @@
 nav {
     height: var(--nav_height);
-    width: min(100%, 2000px);
+    width: var(--main_width);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -10,10 +10,29 @@ nav {
     margin: auto;
 }
 
-main {
-    width: min(100%, 2000px);
+footer {
+    height: var(--footer_height);
+    width: var(--main_width);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
     margin: auto;
-    min-height: calc(100vh - var(--nav_height));
+}
+
+footer > a {
+    font-family: "Regular";
+    font-size: var(--button_font_size);
+    color: var(--color_main);
+    text-decoration: none;
+    
+    &:hover { text-decoration: underline;}
+}
+
+main {
+    width: var(--main_width);
+    margin: auto;
+    min-height: calc(100vh - var(--nav_height) - var(--footer_height));
     display: flex;
     flex-direction: column;
     align-items: center;

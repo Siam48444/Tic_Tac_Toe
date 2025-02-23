@@ -4,6 +4,7 @@ import { CROSS_CLASS, CIRCLE_CLASS, is_winner, is_draw, highlight_winning_cells 
 import { disable_turn_selection, get_user_turn, circle_turn, swap_turn, update_turn_indicator, place_the_mark, reset_turn } from "./JS/turns.js";
 import { place_easy_ai_move } from "./AI/ai_easy.js";
 import { place_medium_ai_move } from "./AI/ai_medium.js";
+import { place_hard_ai_move } from "./AI/ai_hard.js";
 
 
 
@@ -19,18 +20,16 @@ let game_over = false; // Tracks if the game is over
 // Game mode selection
 const mode_selection = document.getElementById("mode_selection");
 let mode = "two players"; // Keeps track of the game mode
-let ai_enabled = false; // Tracks if AI is enabled
 
 mode_selection.addEventListener("change", e => {
     mode = e.target.value; // Set the game mode 
-    ai_enabled = (mode !== "two players"); // Check if ai mode is enabled
     
     // Usual settings after changing modes
     reset_scores();
     reset_turn();
 
     // Usual settings for ai mode
-    if (ai_enabled) {
+    if (mode !== "two players") {
         disable_turn_selection(); // Disable turn selection in AI mode
         start_the_game();
         
@@ -86,11 +85,8 @@ export function start_the_game() {
 
     game_over = false; // Reset the game over state
 
-    if (!ai_enabled) {
-        get_user_turn(); // Only allow user to select turn in two-player mode
-    } else {
-        disable_turn_selection(); // Ensure turn selection is disabled in AI mode
-    }
+    if (mode !== "two players") disable_turn_selection(); // Ensure turn selection is disabled in AI mode
+    else get_user_turn(); // Only allow user to select turn in two-player mode
 
     update_turn_indicator(); // Indicate the user turn graphically 
 
@@ -127,15 +123,12 @@ export function handle_clicks(e) {
     else {
         swap_turn(); 
         update_turn_indicator();      
-    }
 
 
-    // Place ai moves 
-    if (ai_enabled && circle_turn && mode === "easy") {
-        place_easy_ai_move(cells);
-    }
-    else if (ai_enabled && circle_turn && (mode === "medium" || mode === "hard")) {
-        place_medium_ai_move(cells);
+        // Place ai moves (if enabled)
+        if (circle_turn && mode === "easy") place_easy_ai_move(cells);
+        else if (circle_turn && mode === "medium") place_medium_ai_move(cells);
+        else if (circle_turn && mode === "hard") place_hard_ai_move(cells);
     }
 }
 
@@ -152,7 +145,7 @@ export function end_the_game(win, winning_cells = []) {
         highlight_winning_cells(cells, winning_cells); 
         update_scores(circle_turn);
 
-        if (ai_enabled && circle_turn) {
+        if (circle_turn && mode !== "two players") {
             play_sound(draw_sound, is_muted); // Play the winning sound
         }
         else {
