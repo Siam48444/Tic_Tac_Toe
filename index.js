@@ -123,28 +123,32 @@ export function handle_clicks(e) {
     else {
         swap_turn(); 
         update_turn_indicator();      
+    }
 
 
+    // Place ai moves (if enabled)
+    if (mode !== "two players") {
         // Disable cell clicks until the ai puts its mark
         for (let Cell of cells) {
             if ( !Cell.classList.contains(CROSS_CLASS) && !Cell.classList.contains(CIRCLE_CLASS) ) {
                 Cell.removeEventListener("click", handle_clicks);
             }
         }
-
+    
         // Place ai moves (if enabled)
         setTimeout(() => {
             if (circle_turn && mode === "easy") place_easy_ai_move(cells);
             else if (circle_turn && mode === "medium") place_medium_ai_move(cells);
             else if (circle_turn && mode === "hard") place_hard_ai_move(cells);
-
+    
+            
             // Enable cell clicks after the ai puts the mark
             for (let Cell of cells) {
                 if ( !Cell.classList.contains(CROSS_CLASS) && !Cell.classList.contains(CIRCLE_CLASS) ) {
                     Cell.addEventListener("click", handle_clicks, { once: true });
                 }
             }
-        }, 1000);
+        }, 300);
     }
 }
 
