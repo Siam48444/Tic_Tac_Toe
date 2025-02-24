@@ -57,6 +57,8 @@ html {
     --color_sub: #d0d4d9;
     
     --cell_width: clamp(4em, 16vmin, 15em);
+    --cell_border_width: 0.03em;
+    --cell_border_radius: var(--button_font_size);
 
     --main_width: min(100%, 2000px);
 
@@ -73,6 +75,7 @@ html {
     --button_padding: clamp(0.5em, 1vmin, 1.3em) clamp(1em, 2vmin, 2.6em);
     --button_font_size: clamp(0.9em, 1.5vmin, 1em);
     --button_box_shadow_offset: 0 0.25em;
+    --button_border: solid 0.05em transparent;
 
     --winning_message_heading_size: calc(var(--cell_width) * 0.5);
 

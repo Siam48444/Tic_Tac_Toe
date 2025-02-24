@@ -22,7 +22,7 @@ footer {
 
 footer > a {
     font-family: "Regular";
-    font-size: calc(var(--button_font_size) * 0.88);
+    font-size: calc(var(--button_font_size) * 0.85);
     color: var(--color_main);
     text-decoration: none;
     
@@ -51,24 +51,46 @@ main {
     grid-template-columns: repeat(3, auto);
 }
 
+.board > .board_borders_svg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-color: transparent;
+    
+    fill: none;
+    stroke: var(--color_main);
+    stroke-width: var(--cell_border_width);
+    stroke-linecap: round;
+    
+    --dash: 111;
+    stroke-dasharray: var(--dash); 
+    stroke-dashoffset: var(--dash); 
+    
+    animation: cell_border_animation var(--transition_duration_medium) forwards ease-in-out;
+}
+
+@keyframes cell_border_animation {
+    to { stroke-dashoffset: 0; }
+}
+
+
 .cell {
     display: flex;
     align-items: center;
     justify-content: center;
     width: var(--cell_width);
     aspect-ratio: 1;
-    background-color: var(--color_bg);
-    border: solid 0.05em var(--color_main);
+    background-color: transparent;
+    border: none;
     position: relative;
     cursor: pointer;
 }
 
-
-/* Remove unnecessary borders */
-.cell:is(:nth-child(1), :nth-child(2), :nth-child(3)) { border-top: none; }
-.cell:is(:nth-child(1), :nth-child(4), :nth-child(7)) { border-left: none; }
-.cell:is(:nth-child(7), :nth-child(8), :nth-child(9)) { border-bottom: none; }
-.cell:is(:nth-child(3), :nth-child(6), :nth-child(9)) { border-right: none; }
+/* Add fancy border radiuses */
+.cell:nth-child(1) { border-top-left-radius: var(--cell_border_radius); }
+.cell:nth-child(3) { border-top-right-radius: var(--cell_border_radius); }
+.cell:nth-child(7) { border-bottom-left-radius: var(--cell_border_radius); }
+.cell:nth-child(9) { border-bottom-right-radius: var(--cell_border_radius); }
 
 
 /* X and O marks */
@@ -152,6 +174,9 @@ main {
     position: absolute;
     inset: 0;
     background-color: var(--color_bg);
+    border: var(--button_border);
+    border-color: var(--color_main);
+    border-radius: var(--cell_border_radius);
 
     opacity: 0;
     transform: translateX(-3%);
@@ -217,7 +242,7 @@ main {
     padding: var(--button_padding);
     background-color: var(--color_sub);
     outline: none;
-    border: none;
+    border: var(--button_border);
     border-radius: var(--button_border_radius);
     font-family: "Medium";
     font-size: var(--button_font_size);
@@ -280,7 +305,7 @@ main {
     padding: var(--button_padding);
     background-color: var(--color_sub);
     outline: none;
-    border: none;
+    border: var(--button_border);
     border-radius: var(--button_border_radius);
     cursor: pointer;
     font-family: "Medium";
@@ -317,7 +342,7 @@ main {
     padding: var(--button_padding);
     background-color: var(--color_sub);
     outline: none;
-    border: none;
+    border: var(--button_border);
     border-radius: var(--button_border_radius);
     cursor: pointer;
 
@@ -350,7 +375,7 @@ main {
     padding: var(--button_padding);
     background-color: var(--color_sub);
     outline: none;
-    border: none;
+    border: var(--button_border);
     border-radius: var(--button_border_radius);
     font-family: "Medium";
     font-size: var(--button_font_size);
@@ -375,7 +400,7 @@ main {
 .sound_button {
     background-color: var(--color_sub);
     outline: none;
-    border: none;
+    border: var(--button_border);
     border-radius: 50%;
     aspect-ratio: 1;
     padding: clamp(0.5em, 0.8vmin, 1.5em);
@@ -520,6 +545,10 @@ main {
     border-radius: 50%;
 }
 
+
+:is(.restart_button, .theme_button, .sound_button, .mode_selection, .score_button):active {
+    border-color: var(--color_main);
+}
 
 
 
