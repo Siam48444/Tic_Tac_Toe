@@ -2,7 +2,8 @@ const THEMES = [
     "default_light", "default_dark", "dollar", "serika_dark", "moonlight", 
     "retro", "carbon", "neon_ember", "cafe", "red", "darling", "discord",
     "honey", "leather", "lime", "mexican", "miami", "miami_nights", "modern_ink",
-    "menthol", "metaverse", "olive",
+    "menthol", "metaverse", "olive", "peach", "shadow", "strawberry", "tangerine",
+    "watermelon",
 ]
 
 const theme_button = document.querySelector(".theme_button");

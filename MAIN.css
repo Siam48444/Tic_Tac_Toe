@@ -82,8 +82,8 @@ html {
     --theme_head_font_size: calc(var(--button_font_size) * 1.4);
     --theme_head_padding: clamp(1em, 1.5vmin, 1.5em);
     --theme_option_padding: clamp(0.4em, 0.5vmin, 0.7em) clamp(0.6em, 1.5vmin, 1.2em);
-    --theme_indicator_dots_width: calc(var(--button_font_size) * 0.8);
-    --theme_indicator_padding: clamp(0.4em, 0.5vmin, 0.7em) clamp(0.6em, 1vmin, 1em);
+    --theme_indicator_dots_width: calc(var(--button_font_size) * 0.85);
+    --theme_indicator_padding: clamp(0.4em, 0.5vmin, 0.7em);
 }
 
 
@@ -197,6 +197,31 @@ body.olive {
     --color_bg: #e9e5cc;
     --color_main: #53533e;
     --color_sub: #d4cfbc;
+}
+body.peach {
+    --color_bg: #e0d7c1;
+    --color_main: #cc7158;
+    --color_sub: #e2caaf;
+}
+body.shadow {
+    --color_bg: #000000;
+    --color_main: #eeeeee;
+    --color_sub: #222222;
+}
+body.strawberry {
+    --color_bg: #f37f83;
+    --color_main: #fcfcf8;
+    --color_sub: #e06870;
+}
+body.tangerine {
+    --color_bg: #ffede0;
+    --color_main: #fe5503;
+    --color_sub: #fdd3bf;
+}
+body.watermelon {
+    --color_bg: #1f4437;
+    --color_main: #d6686f;
+    --color_sub: #244d3f;
 }
 
 
