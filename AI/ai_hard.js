@@ -16,9 +16,6 @@ function minimax(cells, is_maximizing) {
         return !cell.classList.contains(CROSS_CLASS) && !cell.classList.contains(CIRCLE_CLASS);
     });
 
-    // No move if the board is full
-    if (available_cells.length === 0) return;
-
 
     // AI's turn (maximize score)
     if (is_maximizing) { 
@@ -29,7 +26,7 @@ function minimax(cells, is_maximizing) {
             let score = minimax(cells, false); // Get score
             cell.classList.remove(CIRCLE_CLASS); // Undo move
 
-            best_score = Math.max(score, best_score);
+            best_score = Math.max(score, best_score); // Update the best score
         }
 
         return best_score;
@@ -40,11 +37,11 @@ function minimax(cells, is_maximizing) {
         let best_score = Infinity;
 
         for (let cell of available_cells) {
-            cell.classList.add(CROSS_CLASS); // Simulate ai move
+            cell.classList.add(CROSS_CLASS); // Simulate opponent's move
             let score = minimax(cells, true); // Get score
             cell.classList.remove(CROSS_CLASS); // Undo move
 
-            best_score = Math.min(score, best_score);
+            best_score = Math.min(score, best_score); // Update the best score
         }
 
         return best_score;
