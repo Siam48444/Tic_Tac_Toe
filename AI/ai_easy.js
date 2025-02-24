@@ -4,7 +4,7 @@ import { is_draw, is_winner } from "../JS/rules.js";
 import { end_the_game, handle_clicks } from "../index.js";
 
 
-export function get_easy_ai_move(cells) {
+function get_easy_ai_move(cells) {
     // Get all available (empty) cells
     const available_cells = [...cells].filter(cell => {
         return !cell.classList.contains(CROSS_CLASS) && !cell.classList.contains(CIRCLE_CLASS);
