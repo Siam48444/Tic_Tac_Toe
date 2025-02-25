@@ -178,16 +178,17 @@ main {
     border-radius: var(--cell_border_radius);
 
     opacity: 0;
-    transform: translateX(-3%);
+    transform: scale(0.95);
 }
 
 .winning_message:is(.show_draw, .cross, .circle) {
     opacity: 1;
-    transform: translateX(0);
+    transform: scale(1);
 
-    transition-property: opacity, transform;
-    transition-duration: var(--transition_duration_fast);
-    transition-delay: var(--transition_duration_medium);
+    transition: 
+        opacity var(--transition_duration_fast) var(--transition_duration_medium), 
+        transform var(--transition_duration_fast) var(--transition_duration_medium),
+        background-color var(--transition_duration_fast);
 }
 
 .winning_mark_container {
@@ -572,6 +573,10 @@ body {
 @media (width >=1000px) {
     :is(.restart_button, .theme_button, .sound_button, .mode_selection):hover {
         box-shadow: var(--button_box_shadow_offset) var(--color_main);
+    }
+    
+    .winning_message:hover {
+        background-color: var(--color_sub);
     }
 
     .theme_option:not(.active_theme_option):hover {

@@ -19,31 +19,29 @@ const theme_option = document.querySelectorAll(".theme_option");
 const stored_theme_name = localStorage.getItem("theme_name"); 
 const saved_theme_class = localStorage.getItem("theme_class"); 
 
-window.addEventListener("load", () => {
-    if (saved_theme_class) { 
-        document.body.classList.add(saved_theme_class); // Update the theme class 
-        
-        // Update the theme active style based on the last theme
-        theme_option.forEach(option => { 
-            if (option.getAttribute("data-theme") === saved_theme_class) {
-                option.classList.add("active_theme_option");
-            } 
-            else {
-                option.classList.remove("active_theme_option");
-            }
-        });
-    } 
-    else { document.body.classList.add("default_light"); }
+if (saved_theme_class) { 
+    document.body.classList.add(saved_theme_class); // Update the theme class 
     
-    
-    // Update the theme name 
-    if (stored_theme_name) { 
-        theme_text.innerText = stored_theme_name; 
-    }
-    else {
-        theme_text.innerText = "Default Light";
-    }
-});
+    // Update the theme active style based on the last theme
+    theme_option.forEach(option => { 
+        if (option.getAttribute("data-theme") === saved_theme_class) {
+            option.classList.add("active_theme_option");
+        } 
+        else {
+            option.classList.remove("active_theme_option");
+        }
+    });
+} 
+else { document.body.classList.add("default_light"); }
+
+
+// Update the theme name 
+if (stored_theme_name) { 
+    theme_text.innerText = stored_theme_name; 
+}
+else {
+    theme_text.innerText = "Default Light";
+}
 
 
 

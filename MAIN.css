@@ -58,7 +58,7 @@ html {
     
     --cell_width: clamp(4em, 16vmin, 15em);
     --cell_border_thickness: 0.03em;
-    --cell_border_radius: var(--button_font_size);
+    --cell_border_radius: calc(var(--button_font_size) * 1.5);
 
     --main_width: min(100%, 2000px);
 
@@ -81,7 +81,7 @@ html {
 
     --transition_duration_fast: 300ms;
     --transition_duration_medium: 600ms;
-    --transition_duration_slow: 1500ms;
+    --transition_duration_slow: 1000ms;
 
     --theme_head_font_size: calc(var(--button_font_size) * 1.4);
     --theme_head_padding: clamp(1em, 1.5vmin, 1.5em);

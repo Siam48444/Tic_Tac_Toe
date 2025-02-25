@@ -16,6 +16,10 @@ export function get_user_turn() {
     // Remove the not allowed cursor and let the user choose turn
     score_button_X.classList.remove("score_button_disabled");
     score_button_O.classList.remove("score_button_disabled");
+
+    // Add titles to the buttons
+    score_button_X.title = "Choose X's turn";
+    score_button_O.title = "Choose O's turn";
 }
 
 export function choose_X() { 
@@ -81,4 +85,8 @@ export function disable_turn_selection() {
     // Disable the turn selection by not allowing the cursor
     score_button_X.classList.add("score_button_disabled");
     score_button_O.classList.add("score_button_disabled");
+
+    // Remove title from the buttons
+    score_button_X.removeAttribute("title");
+    score_button_O.removeAttribute("title");
 }
