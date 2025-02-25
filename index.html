@@ -20,7 +20,7 @@
         <!-- Navigation bar -->
         <nav>
             <!-- Sound button -->
-            <button class="sound_button" title="Toggle sound">
+            <button id="sound_button" class="sound_button" title="Toggle sound">
                 <svg viewBox="4.5 5.5 25 25" class="sound_svg">
                     <defs>
                         <clipPath>
@@ -168,12 +168,12 @@
                 <!-- Board borders svg -->
                 <svg class="board_borders_svg" viewBox="0 0 100 100">
                     <!-- Vertical Lines -->
-                    <line x1="33.333%" y1="1" x2="33.333%" y2="99" />
-                    <line x1="66.666%" y1="1" x2="66.666%" y2="99" />
+                    <line x1="33.333%" y1="0" x2="33.333%" y2="100" />
+                    <line x1="66.666%" y1="0" x2="66.666%" y2="100" />
 
                     <!-- Horizontal Lines -->
-                    <line x1="1" y1="33.333%" x2="99" y2="33.333%" />
-                    <line x1="1" y1="66.666%" x2="99" y2="66.666%" />
+                    <line x1="0" y1="33.333%" x2="100" y2="33.333%" />
+                    <line x1="0" y1="66.666%" x2="100" y2="66.666%" />
                 </svg>
 
                 <!-- A message to show after each game -->
@@ -400,7 +400,7 @@
                         Peach
                         <div class="theme_indicator" style="background-color: #e0d7c1">
                             <span style="background-color: #d3bda4"></span>
-                            <span style="background-color: #cc7158"></span>
+                            <span style="background-color: #a04e38"></span>
                             <span style="background-color: #887968"></span>
                         </div>
                     </button>

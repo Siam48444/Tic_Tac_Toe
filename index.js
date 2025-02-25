@@ -1,4 +1,4 @@
-import { winning_sound, draw_sound, play_sound, is_muted, toggle_sound, sound_button } from "./Assets/Sounds/sounds.js";
+import { winning_sound, draw_sound, play_sound, is_muted, set_sound_mode } from "./Assets/Sounds/sounds.js";
 import { reset_scores, update_scores } from "./JS/scores.js";
 import { CROSS_CLASS, CIRCLE_CLASS, is_winner, is_draw, highlight_winning_cells } from "./JS/rules.js";
 import { disable_turn_selection, get_user_turn, circle_turn, swap_turn, update_turn_indicator, place_the_mark, reset_turn } from "./JS/turns.js";
@@ -19,7 +19,7 @@ let game_over = false; // Tracks if the game is over
  
  
 // Let the user choose to mute or unmute
-sound_button.addEventListener("click", toggle_sound);
+set_sound_mode();
 
 
 
@@ -115,7 +115,7 @@ export function handle_clicks(e) {
                     Cell.addEventListener("click", handle_clicks, { once: true });
                 }
             }
-        }, 300);
+        }, 200);
     }
 }
 

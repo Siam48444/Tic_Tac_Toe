@@ -60,7 +60,6 @@ main {
     fill: none;
     stroke: var(--color_main);
     stroke-width: var(--cell_border_width);
-    stroke-linecap: round;
     
     --dash: 111;
     stroke-dasharray: var(--dash); 
@@ -202,7 +201,7 @@ main {
     fill: none;
     stroke: var(--color_main);
     stroke-width: var(--mark_thickness);
-    width: var(--mark_size);
+    width: calc(var(--winning_message_heading_size) * 1.8);
     aspect-ratio: 1;
     pointer-events: none;
 }
@@ -264,7 +263,7 @@ main {
 }
 
 .restart_button.restart_clicked > svg {
-    animation: restart_clicked var(--transition_duration_medium) forwards;
+    animation: restart_clicked var(--transition_duration_medium) forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 @keyframes restart_clicked {
