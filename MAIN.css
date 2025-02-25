@@ -57,12 +57,12 @@ html {
     --color_sub: #d0d4d9;
     
     --cell_width: clamp(4em, 16vmin, 15em);
-    --cell_border_width: 0.03em;
+    --cell_border_thickness: 0.03em;
     --cell_border_radius: var(--button_font_size);
 
     --main_width: min(100%, 2000px);
 
-    --mark_size: calc(var(--cell_width) * 0.9);
+    --mark_size: calc(var(--cell_width) * 0.85);
     --mark_thickness: 1em;
 
     --stroke_dash_X: 111;
@@ -81,6 +81,7 @@ html {
 
     --transition_duration_fast: 300ms;
     --transition_duration_medium: 600ms;
+    --transition_duration_slow: 1500ms;
 
     --theme_head_font_size: calc(var(--button_font_size) * 1.4);
     --theme_head_padding: clamp(1em, 1.5vmin, 1.5em);
@@ -218,7 +219,7 @@ body.strawberry {
 }
 body.tangerine {
     --color_bg: #ffede0;
-    --color_main: #fe5503;
+    --color_main: #da5310;
     --color_sub: #fdd3bf;
 }
 body.watermelon {

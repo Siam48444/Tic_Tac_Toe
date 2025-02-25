@@ -18,14 +18,12 @@ export function set_sound_mode() {
 
 
     // Check for the sound mode when the page loads
-    window.addEventListener("load", () => {
-        const sound_muted = localStorage.getItem("sound_muted");
+    const sound_muted = localStorage.getItem("sound_muted");
 
-        if (sound_muted === "true") {
-            is_muted = true;
-            sound_button.classList.add("muted");
-        }
-    });
+    if (sound_muted === "true") {
+        is_muted = true;
+        sound_button.classList.add("muted");
+    }
 
 
     // Toggle sound mode

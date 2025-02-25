@@ -51,7 +51,7 @@ main {
     grid-template-columns: repeat(3, auto);
 }
 
-.board > .board_borders_svg {
+.board_borders_svg {
     position: absolute;
     inset: 0;
     pointer-events: none;
@@ -59,13 +59,13 @@ main {
     
     fill: none;
     stroke: var(--color_main);
-    stroke-width: var(--cell_border_width);
+    stroke-width: var(--cell_border_thickness);
     
     --dash: 111;
     stroke-dasharray: var(--dash); 
     stroke-dashoffset: var(--dash); 
     
-    animation: cell_border_animation var(--transition_duration_medium) forwards ease-in-out;
+    animation: cell_border_animation var(--transition_duration_slow) forwards;
 }
 
 @keyframes cell_border_animation {
@@ -545,9 +545,24 @@ main {
 }
 
 
+/* Buttons clicking effects */
 :is(.restart_button, .theme_button, .sound_button, .mode_selection, .score_button):active {
     border-color: var(--color_main);
 }
+
+
+/* Page loading buttons animation */
+body {
+    animation: load_animation var(--transition_duration_slow) forwards;
+}
+
+@keyframes load_animation {
+    from {
+        opacity: 0;
+    }
+}
+
+
 
 
 
